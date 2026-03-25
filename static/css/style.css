@@ -1,0 +1,280 @@
+/* Salburua — minimal, mobile-first */
+
+:root {
+  --bg: #faf9f7;
+  --text: #1a1a1a;
+  --muted: #5c5c5c;
+  --accent: #1f6b5c;
+  --border: #e2ddd4;
+  --max: 42rem;
+  --space: 1rem;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--space), var(--max));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+  padding: var(--space) var(--space);
+  max-width: 56rem;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo:hover,
+.logo:focus {
+  color: var(--accent);
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover,
+.nav a:focus {
+  text-decoration: underline;
+}
+
+.site-main {
+  flex: 1;
+  padding: 2rem var(--space) 3rem;
+  max-width: 56rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #fff;
+  padding: 1.5rem var(--space);
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 56rem;
+}
+
+.footer-inner p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.prose :where(h1, h2, h3) {
+  line-height: 1.25;
+}
+
+.prose h1 {
+  font-size: clamp(1.75rem, 4vw, 2.1rem);
+  margin-top: 0;
+}
+
+.prose h2 {
+  font-size: 1.35rem;
+  margin-top: 1.75rem;
+}
+
+.prose p,
+.prose ul {
+  margin: 0.75rem 0;
+}
+
+.prose a {
+  color: var(--accent);
+}
+
+.home-intro {
+  margin-bottom: 2.5rem;
+}
+
+.home-news h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.post-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 36rem) {
+  .post-cards {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+}
+
+.post-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.post-card a {
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-card a:hover,
+.post-card a:focus {
+  color: var(--accent);
+}
+
+.post-card time {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.excerpt {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0;
+}
+
+.more-link {
+  margin-top: 1.25rem;
+}
+
+.more-link a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.list-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-intro {
+  margin-top: 0.5rem;
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list > li {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.post-list > li:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.post-row h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.25rem;
+}
+
+.post-row h2 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-row h2 a:hover,
+.post-row h2 a:focus {
+  color: var(--accent);
+}
+
+.post-row time {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.post-row .thumb {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.post-row .thumb img {
+  border-radius: 4px;
+  max-width: 160px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.single-header .meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0.25rem 0 1rem;
+}
+
+.featured {
+  margin: 0 0 1.25rem;
+}
+
+.featured img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}

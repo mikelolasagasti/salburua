@@ -1,0 +1,21 @@
+# Salburua — Guraso elkartea (Hugo)
+baseURL: 'https://salburua.mundurat.net/'
+languageCode: eu
+defaultContentLanguage: eu
+title: Salburua Guraso Elkartea
+
+theme: salburua
+
+params:
+  description: Salburua ikastetxeko guraso elkartearen webgune ofiziala.
+  author: Salburua Guraso Elkartea
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS

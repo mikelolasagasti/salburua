@@ -1,0 +1,16 @@
+# Netlify build — https://docs.netlify.com/configure-builds/file-based-configuration/
+[build]
+  command = "hugo"
+  publish = "public"
+
+[build.environment]
+  # Pin Hugo for reproducible builds; bump when you upgrade locally.
+  # https://github.com/gohugoio/hugo/releases
+  HUGO_VERSION = "0.152.2"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

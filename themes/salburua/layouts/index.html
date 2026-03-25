@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <article class="home-intro prose">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+
+  <section class="home-news" aria-labelledby="berriak-izenburua">
+    <h2 id="berriak-izenburua">Azken berriak</h2>
+    {{ $news := where site.RegularPages "Section" "berriak" }}
+    {{ if $news }}
+      <ul class="post-cards">
+        {{ range first 3 $news.ByDate.Reverse }}
+          <li class="post-card">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            <p class="excerpt">{{ .Summary | plainify | truncate 160 }}</p>
+          </li>
+        {{ end }}
+      </ul>
+      <p class="more-link"><a href="{{ "/berriak/" | relURL }}">Berri guztiak ikusi →</a></p>
+    {{ else }}
+      <p>Oraindik ez dago berririk.</p>
+    {{ end }}
+  </section>
+{{ end }}

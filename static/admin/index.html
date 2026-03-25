@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CMS — Salburua</title>
+  <!--
+    Netlify Identity + Git Gateway (Decap CMS backend)
+
+    1. Netlify: Site configuration → Identity → Enable Identity.
+    2. Identity → Registration preferences: choose "Invite only" (recommended) or "Open".
+    3. Identity → Services → Git Gateway → Enable Git Gateway (connects to this repo).
+    4. Invite users: Identity → Invite users (email/password login).
+
+    No API keys belong in this file; Git Gateway uses Netlify’s secure link to the repo.
+  -->
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

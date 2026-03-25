@@ -1,0 +1,53 @@
+# Decap CMS (ohian Netlify CMS)
+# https://decapcms.org/docs/configuration-options/
+#
+# Netlify Identity + Git Gateway:
+#   - Netlify: Identity → Enable Identity
+#   - Identity → Services → Enable Git Gateway
+#   - Aldatu "branch" balioa zure biltegiaren lehenetsitako adarrera (adib. main edo master)
+#
+# Ez da kredentzialik idatzi behar hemen; saio-hasiera Netlify Identity bidez egiten da.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Edukiaren hizkuntza (CMS interfazea)
+locale: eu
+
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: berriak
+    label: Berriak
+    label_singular: Berria
+    folder: content/berriak
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Izenburua, name: title, widget: string }
+      - { label: Data, name: date, widget: datetime, time_format: true, date_format: YYYY-MM-DD }
+      - { label: Deskribapena (SEO), name: description, widget: string, required: false }
+      - { label: Irudia (aukerakoa), name: image, widget: image, required: false }
+      - { label: Edukia, name: body, widget: markdown }
+
+  - name: pages
+    label: Orri estatikoa
+    files:
+      - label: Nor gara
+        name: nor-gara
+        file: content/nor-gara.md
+        fields:
+          - { label: Izenburua, name: title, widget: string }
+          - { label: Deskribapena (SEO), name: description, widget: string, required: false }
+          - { label: Edukia, name: body, widget: markdown }
+      - label: Kontaktua
+        name: kontaktua
+        file: content/kontaktua.md
+        fields:
+          - { label: Izenburua, name: title, widget: string }
+          - { label: Deskribapena (SEO), name: description, widget: string, required: false }
+          - { label: Edukia, name: body, widget: markdown }

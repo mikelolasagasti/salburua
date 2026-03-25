@@ -1,0 +1,8 @@
+name = "Salburua"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "Minimal theme for Salburua guraso elkartea"
+min_version = "0.116.0"
+
+[author]
+  name = "Salburua"

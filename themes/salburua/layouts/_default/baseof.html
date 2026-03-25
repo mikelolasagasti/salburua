@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ site.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {{- if .IsHome -}}
+      {{ site.Title }}
+    {{- else -}}
+      {{ .Title }} | {{ site.Title }}
+    {{- end -}}
+  </title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Params.description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+  {{- with .Params.image -}}
+  <meta property="og:image" content="{{ . | absURL }}">
+  {{- end -}}
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Joan edukira</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+      <nav class="nav" aria-label="Nabigazio nagusia">
+        <ul>
+          <li><a href="{{ "/nor-gara/" | relURL }}">Nor gara</a></li>
+          <li><a href="{{ "/berriak/" | relURL }}">Berriak</a></li>
+          <li><a href="{{ "/kontaktua/" | relURL }}">Kontaktua</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="site-main wrap">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>{{ site.Title }} · {{ now.Format "2006" }}</p>
+      <p class="footer-note">{{ site.Params.description }}</p>
+    </div>
+  </footer>
+</body>
+</html>

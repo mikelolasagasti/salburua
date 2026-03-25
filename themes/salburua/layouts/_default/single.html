@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <article class="prose single">
+    <header class="single-header">
+      <h1>{{ .Title }}</h1>
+      {{ if eq .Section "berriak" }}
+        <p class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></p>
+      {{ end }}
+    </header>
+    {{ with .Params.image }}
+      <figure class="featured">
+        <img src="{{ . | relURL }}" alt="" width="1200" height="630" loading="lazy">
+      </figure>
+    {{ end }}
+    {{ .Content }}
+  </article>
+{{ end }}
