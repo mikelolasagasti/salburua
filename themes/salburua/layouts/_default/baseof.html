@@ -15,6 +15,21 @@
   <meta property="og:image" content="{{ . | absURL }}">
   {{- end -}}
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{/* Netlify Identity emails land on Site URL with hash; forward to /admin/ so the widget loads there only. */}}
+  <script>
+    (function () {
+      var h = window.location.hash;
+      if (!h) return;
+
+      var tokens = ["invite_token", "recovery_token", "confirmation_token"];
+      for (var i = 0; i < tokens.length; i++) {
+        if (h.indexOf(tokens[i]) !== -1) {
+          window.location.replace("{{ "/admin/" | relURL }}" + h);
+          break;
+        }
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Joan edukira</a>
@@ -39,17 +54,5 @@
       <p class="footer-note">{{ site.Params.description }}</p>
     </div>
   </footer>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function (user) {
-        if (!user) {
-          window.netlifyIdentity.on("login", function () {
-            document.location.href = "{{ "/admin/" | relURL }}";
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>
