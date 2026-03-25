@@ -2,6 +2,8 @@
 baseURL: 'https://salburua.mundurat.net/'
 languageCode: eu
 defaultContentLanguage: eu
+# English pluralization mangles Basque section titles (e.g. Berriak → Berriaks).
+pluralizeListTitles: false
 title: Salburua Guraso Elkartea
 
 theme: salburua
