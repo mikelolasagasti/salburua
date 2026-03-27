@@ -6,6 +6,12 @@ defaultContentLanguage: eu
 pluralizeListTitles: false
 title: Salburua Guraso Elkartea
 
+# Default Hugo taxonomies (categories/tags) create empty list URLs; we only use section "berriak".
+# Re-enable by removing these lines and adding taxonomies / front matter if needed later.
+disableKinds:
+  - taxonomy
+  - term
+
 theme: salburua
 
 params:
