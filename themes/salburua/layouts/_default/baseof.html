@@ -15,6 +15,7 @@
   <meta property="og:image" content="{{ . | absURL }}">
   {{- end -}}
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="alternate" type="application/rss+xml" href="{{ "/berriak/index.xml" | absURL }}" title="{{ site.Title }} — Berriak">
   {{/* Netlify Identity emails land on Site URL with hash; forward to /admin/ so the widget loads there only. */}}
   <script>
     (function () {
