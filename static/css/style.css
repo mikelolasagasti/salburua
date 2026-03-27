@@ -3,8 +3,13 @@
 :root {
   --bg: #faf9f7;
   --text: #1a1a1a;
-  --muted: #5c5c5c;
-  --accent: #1f6b5c;
+  /* Logo-derived: taupe for secondary text */
+  --muted: #6b6568;
+  /* Association “background” lime + darker tones for readable links */
+  --brand-lime: #a2c523;
+  --brand-brown: #5d3a1a;
+  --accent: #4a5c12;
+  --accent-hover: #637717;
   --border: #e2ddd4;
   --max: 42rem;
   --space: 1rem;
@@ -43,7 +48,7 @@ body {
   left: -9999px;
   top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: var(--accent);
+  background: var(--brand-brown);
   color: #fff;
   z-index: 100;
 }
@@ -53,6 +58,7 @@ body {
 }
 
 .site-header {
+  border-top: 3px solid var(--brand-lime);
   border-bottom: 1px solid var(--border);
   background: #fff;
 }
@@ -103,13 +109,13 @@ body {
 
 .nav-toggle:hover,
 .nav-toggle:focus {
-  border-color: var(--accent);
+  border-color: var(--brand-lime);
   color: var(--accent);
   outline: none;
 }
 
 .nav-toggle:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--brand-lime);
   outline-offset: 2px;
 }
 
@@ -167,14 +173,43 @@ body {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  max-width: min(100%, 20rem);
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
 }
 
+.logo-mark {
+  flex-shrink: 0;
+  height: 2.5rem;
+  width: auto;
+  max-width: 4.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.logo-text {
+  min-width: 0;
+  line-height: 1.2;
+}
+
 .logo:hover,
 .logo:focus {
-  color: var(--accent);
+  color: var(--accent-hover);
+}
+
+.logo:hover .logo-mark,
+.logo:focus .logo-mark {
+  filter: brightness(1.03);
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--brand-lime);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .nav ul {
@@ -225,7 +260,17 @@ body {
 
 .nav a:hover,
 .nav a:focus {
+  color: var(--accent-hover);
   text-decoration: underline;
+  text-decoration-color: var(--brand-lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
+}
+
+.nav a:focus-visible {
+  outline: 2px solid var(--brand-lime);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .site-main {
@@ -236,7 +281,9 @@ body {
 
 .site-footer {
   border-top: 1px solid var(--border);
-  background: #fff;
+  background:
+    linear-gradient(var(--brand-lime), var(--brand-lime)) 0 0 / 100% 2px no-repeat,
+    #fff;
   padding: 1.5rem var(--space);
   margin-top: auto;
 }
@@ -272,6 +319,16 @@ body {
 
 .prose a {
   color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  text-decoration-color: color-mix(in srgb, var(--brand-lime) 50%, var(--accent));
+}
+
+.prose a:hover,
+.prose a:focus {
+  color: var(--accent-hover);
+  text-decoration-color: var(--brand-lime);
 }
 
 .home-intro {
@@ -299,6 +356,7 @@ body {
 
 .post-card {
   border: 1px solid var(--border);
+  border-left: 3px solid var(--brand-lime);
   border-radius: 6px;
   padding: 1rem;
   background: #fff;
@@ -312,7 +370,7 @@ body {
 
 .post-card a:hover,
 .post-card a:focus {
-  color: var(--accent);
+  color: var(--accent-hover);
 }
 
 .post-card time {
@@ -335,6 +393,12 @@ body {
 .more-link a {
   color: var(--accent);
   font-weight: 500;
+  text-decoration-color: var(--brand-lime);
+}
+
+.more-link a:hover,
+.more-link a:focus {
+  color: var(--accent-hover);
 }
 
 .list-header {
@@ -372,7 +436,11 @@ body {
 
 .post-row h2 a:hover,
 .post-row h2 a:focus {
-  color: var(--accent);
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--brand-lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
 }
 
 .post-row time {
